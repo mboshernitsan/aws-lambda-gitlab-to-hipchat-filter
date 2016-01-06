@@ -35,7 +35,7 @@ ifndef AWS_DEFAULT_REGION
 endif
 
 deploy: check-aws-env output/function.zip
-	aws lambda update-function-code --function-name postToHipChatFromPivotal --zip-file fileb://output/function.zip
+	aws lambda update-function-code --function-name postToHipChatFromGitLab --zip-file fileb://output/function.zip
 
 
 FIXTURES= \
