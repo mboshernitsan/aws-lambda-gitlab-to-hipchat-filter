@@ -1,0 +1,83 @@
+{
+	"expected_status":"sent",
+
+	"object_kind": "note",
+	"user": {
+		"name": "maratb",
+		"username": "maratb",
+		"avatar_url": "https://secure.gravatar.com/avatar/614f13f800699cc408db8bb71da31e11?s=40\u0026d=identicon"
+	},
+	"project_id": 120,
+	"repository": {
+		"name": "marat-test-project",
+		"url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"description": "",
+		"homepage": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project"
+	},
+	"object_attributes": {
+		"id": 11994,
+		"note": "comment on merge request",
+		"noteable_type": "MergeRequest",
+		"author_id": 14,
+		"created_at": "2016-01-06 19:57:22 UTC",
+		"updated_at": "2016-01-06 19:57:22 UTC",
+		"project_id": 120,
+		"attachment": null,
+		"line_code": null,
+		"commit_id": "",
+		"noteable_id": 36,
+		"system": false,
+		"st_diff": null,
+		"updated_by_id": null,
+		"is_award": false,
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/merge_requests/1#note_11994"
+	},
+	"merge_request": {
+		"id": 36,
+		"target_branch": "master",
+		"source_branch": "some_branch",
+		"source_project_id": 120,
+		"author_id": 14,
+		"assignee_id": 14,
+		"title": "Let's merge this",
+		"created_at": "2016-01-06 19:51:19 UTC",
+		"updated_at": "2016-01-06 19:51:19 UTC",
+		"milestone_id": null,
+		"state": "opened",
+		"merge_status": "can_be_merged",
+		"target_project_id": 120,
+		"iid": 1,
+		"description": "",
+		"position": 0,
+		"locked_at": null,
+		"updated_by_id": null,
+		"merge_error": null,
+		"source": {
+			"name": "marat-test-project",
+			"ssh_url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+			"http_url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project.git",
+			"web_url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project",
+			"namespace": "maratb",
+			"visibility_level": 0
+		},
+		"target": {
+			"name": "marat-test-project",
+			"ssh_url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+			"http_url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project.git",
+			"web_url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project",
+			"namespace": "maratb",
+			"visibility_level": 0
+		},
+		"last_commit": {
+			"id": "f4a991e4da42f80891c809e89c7b254c7504b39d",
+			"message": "file 10\n",
+			"timestamp": "2016-01-06T11:48:02-08:00",
+			"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/f4a991e4da42f80891c809e89c7b254c7504b39d",
+			"author": {
+				"name": "Marat Boshernitsan",
+				"email": "maratb@synopsys.com"
+			}
+		},
+		"work_in_progress": false
+	}
+}

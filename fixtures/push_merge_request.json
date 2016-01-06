@@ -1,0 +1,85 @@
+{
+	"expected_status":"sent",
+
+	"object_kind": "push",
+	"before": "2e613360d8e2b35cc960938c29d25a5e634f2a06",
+	"after": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+	"ref": "refs/heads/master",
+	"checkout_sha": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+	"message": null,
+	"user_id": 14,
+	"user_name": "maratb",
+	"user_email": "maratb@synopsys.com",
+	"project_id": 120,
+	"repository": {
+		"name": "marat-test-project",
+		"url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"description": "",
+		"homepage": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project",
+		"git_http_url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project.git",
+		"git_ssh_url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"visibility_level": 0
+	},
+	"commits": [{
+		"id": "7578e759135feb2afda4b3ba2b23ea01808a045e",
+		"message": "Revert \"rm file 3\"\n\nThis reverts commit bbce70e8d83882f366484c832b9f1c12787675c5.\n",
+		"timestamp": "2016-01-06T11:44:50-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/7578e759135feb2afda4b3ba2b23ea01808a045e",
+		"author": {
+			"name": "Marat Boshernitsan",
+			"email": "maratb@synopsys.com"
+		},
+		"added": ["file3.txt"],
+		"modified": [],
+		"removed": []
+	}, {
+		"id": "25c855011e1e1ad232ba06dd4f79f231d3e0363e",
+		"message": "Revert \"rm file 2\"\n\nThis reverts commit dd5bb1441b5184f0c7325d7624dc8f766139a8b5.\n",
+		"timestamp": "2016-01-06T11:45:03-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/25c855011e1e1ad232ba06dd4f79f231d3e0363e",
+		"author": {
+			"name": "Marat Boshernitsan",
+			"email": "maratb@synopsys.com"
+		},
+		"added": ["file2.txt"],
+		"modified": [],
+		"removed": []
+	}, {
+		"id": "49bfb3e56933d281eeb085f14c1f5de74616065f",
+		"message": "Revert \"rm file 1\"\n\nThis reverts commit cccba68b235b887a353fdf1f7a5bdff56a6dbe0d.\n",
+		"timestamp": "2016-01-06T11:45:10-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/49bfb3e56933d281eeb085f14c1f5de74616065f",
+		"author": {
+			"name": "Marat Boshernitsan",
+			"email": "maratb@synopsys.com"
+		},
+		"added": ["file1.txt"],
+		"modified": [],
+		"removed": []
+	}, {
+		"id": "f4a991e4da42f80891c809e89c7b254c7504b39d",
+		"message": "file 10\n",
+		"timestamp": "2016-01-06T11:48:02-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/f4a991e4da42f80891c809e89c7b254c7504b39d",
+		"author": {
+			"name": "Marat Boshernitsan",
+			"email": "maratb@synopsys.com"
+		},
+		"added": ["file10.txt"],
+		"modified": [],
+		"removed": []
+	}, {
+		"id": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"message": "Merge branch 'some_branch' into 'master'\r\n\r\nLet's merge this\r\n\r\n\r\n\r\nSee merge request !1",
+		"timestamp": "2016-01-06T11:59:58-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"author": {
+			"name": "maratb",
+			"email": "maratb@synopsys.com"
+		},
+		"added": ["file1.txt", "file10.txt", "file2.txt", "file3.txt"],
+		"modified": [],
+		"removed": []
+	}],
+	"total_commits_count": 5
+}

@@ -4,85 +4,92 @@ var HipChat = require('hipchat-client');
 
 exports.handler = (function(event, context) {
 	var activity = event.activity;
-	var skip = false, bgcolor = 'yellow';
+	var branches = event.branches ? event.branches.split(',') : [ 'master' ]; // by default, only care about the master branch
 
-	switch (activity.kind) {
-		case "task_create_activity": 
-		case "comment_create_activity":
-			skip = false;
-			bgcolor = 'gray';
-			break;
+	var skip = false, bgcolor = 'yellow', html = null;
 
-		case "story_create_activity":
-		case "story_delete_activity":
-			skip = false;
+	switch (activity.object_kind) {
+		case "push":
+			var branch = activity.ref.startsWith("refs/heads/") ? activity.ref.substring("refs/heads/".length) : null;
+			if (branch != null && branches.indexOf(branch) == -1) { skip = true; break; } 
+
 			bgcolor = 'yellow';
-			break;
-
-		case "story_update_activity":
-			skip = true;
-			for (var i = 0; i < activity.changes.length; i++) {
-				var change = activity.changes[i];
-				// skip non-story changes
-				if (change.kind != 'story') {
-					continue;
-				}
-				// iterate over changed fields to determine if we care
-				for (var field in change.new_values) {
-					switch (field) {
-						case "current_state":
-							switch (change.new_values.current_state) {
-								case "accepted":
-									bgcolor = 'green';
-									break;
-								case "rejeceted":
-									bgcolor = 'red';
-									break;
-							}
-							skip = false;
-							break;
-					}
-				}
+			html = util.format("%s pushed to %s <a href=%s>%s</a>",
+								activity.user_name,
+								branch != null ? util.format("branch <a href=%s/commits/%s>%s</a> of", activity.repository.homepage, branch, branch) : '',
+								activity.repository.homepage, 
+								activity.repository.name);
+			for (var i = 0; i < activity.commits.length; i++) {
+				var commit = activity.commits[i];
+				html += util.format("<br>- %s (<a href=%s>%s</a>)", commit.message, commit.url, commit.id.substring(0, 7));
 			}
 			break;
 
+		case "note":
+			bgcolor = 'gray';
 
-		case "story_c2genericcommand_activity":
+			switch (activity.object_attributes.noteable_type) {
+				case "Commit":
+					html = util.format("%s commented on <a href=%s>commit %s</a> in <a href=%s>%s</a>: \"%s\"",
+										activity.user.name,
+										activity.commit.url,
+										activity.commit.id.substring(0, 7),										
+										activity.repository.homepage, 
+										activity.repository.name,
+										activity.object_attributes.note);
+					break;
+				case "MergeRequest":
+					html = util.format("%s commented on <a href=%s/merge_requests/%d>merge request #%d</a> (%s) in <a href=%s>%s</a>: \"%s\"",
+										activity.user.name,
+										activity.repository.homepage, 
+										activity.merge_request.iid,
+										activity.merge_request.iid,
+										activity.merge_request.title,
+										activity.repository.homepage, 
+										activity.repository.name,
+										activity.object_attributes.note);
+					break;
 
-		case "epic_create_activity":
-		case "epic_delete_activity":
-		case "epic_update_activity":
-		case "epic_move_activity":
+				case "Issue":
+				case "Snippet":
+				default:
+					skip = true;
+					break;
+			}
+			break;
 
-		case "comment_delete_activity": 
-		case "comment_update_activity":
+		case "merge_request":
+			var action_color = { open: 'yellow', merge: 'green', close: 'red' };
+			switch (activity.object_attributes.action) { 
+				case "open":
+				case "merge":
+				case "close":
+					bgcolor = action_color[activity.object_attributes.action];
+					html = util.format("%s %sd <a href=%s/merge_requests/%d>merge request #%d</a> (%s) in <a href=%s>%s</a>",
+						activity.user.name,
+						activity.object_attributes.action,
+						activity.repository.homepage, 
+						activity.object_attributes.iid,
+						activity.object_attributes.iid,
+						activity.object_attributes.title,
+						activity.repository.homepage, 
+						activity.repository.name);
+					break;
+				case "update":
+				default:
+					skip = true;
+					break;
+			}
+			break;
 
-		case "follower_create_activity":
-		case "follower_delete_activity": 
-
-		case "iteration_update_activity":
-
-		case "label_create_activity":
-		case "label_delete_activity":
-		case "label_update_activity":
-		
-		case "project_membership_create_activity":
-		case "project_membership_delete_activity":
-		case "project_membership_update_activity":
-		case "project_update_activity":
-
-		case "story_move_activity":
-		case "story_move_from_project_activity":
-		case "story_move_into_project_activity":
-		case "story_move_into_project_and_prioritize_activity":
-
-		case "task_delete_activity": 
-		case "task_update_activity":
+		case "tag_push":
+		case "issue":
+		default:
 			skip = true;
 			break;
 	}
 
-	if (skip) {
+	if (!html || skip) {
 		context.done(null, { "status":"skipped"});
 		return;
 	}
@@ -90,24 +97,13 @@ exports.handler = (function(event, context) {
 
 	// creation message and options
 	var msg = {
-		from: "Pivotal",
+		from: "GitLab",
 		room_id : event.hipchatRoom,
 		message_format : "html",
 		color : bgcolor,
 		notify : false,
-		message : activity.message
+		message : html
 	};
-
-	if (activity.primary_resources.length == 1) {
-		var resource = activity.primary_resources[0];
-
-		// resolve indefinite phrase in message
-		msg.message = msg.message.replace(/this (feature|epic|bug|chore|release)/g, 
-			util.format("%s: \"%s\"", (resource.kind == "story" ? resource.story_type : resource.kind), resource.name));
-
-		// append Pivotal URL
-		msg.message += util.format(" <a href=%s>view »</a>", resource.url);
-	}	
 
 	var hipchatter = new HipChat(event.hipchatToken);
 	

@@ -1,6 +1,6 @@
-# AWS Lambda Pivotal-to-HipChat filter
+# AWS Lambda GitLab-to-HipChat filter
 
-An AWS Lambda function for filtering and transforming Pivotal activity web hook (v5) notifications and posting them to a HipChat room.  We find this cleaner and more flexible than the official HipChat Pivotal endpoint (https://confluence.atlassian.com/display/HIPCHATKB/Pivotal+Tracker+integration).
+An AWS Lambda function for filtering and transforming GitLab activity web hook (v5) notifications and posting them to a HipChat room.  We find this cleaner and more flexible than the GitLab's built-in HipChat service.
 
 *Important note:* for this integration, you will need to use HipChat API v1 tokens.  
 
@@ -21,7 +21,7 @@ $ export AWS_LAMBDA_ROLE_ARN=...
 
 # Create the function itself
 $ aws lambda create-function 
-	--function-name postToHipChatFromPivotal 
+	--function-name postToHipChatFromGitLab
 	--runtime nodejs 
 	--role ${AWS_LAMBDA_ROLE_ARN} 
 	--handler index.handler
@@ -29,7 +29,7 @@ $ export AWS_LAMBDA_FUNCTION_ARN=... # lookup in the output above
 
 # Create the API endpoint
 $ aws apigateway create-rest-api 
-	--name "pivotalToHipChat"
+	--name "gitLablToHipChat"
 $ export AWS_APIGATEWAY_ID=... # lookup in the output above
 
 $ aws apigateway get-resources 
@@ -92,9 +92,9 @@ $ HIPCHAT_TOKEN=... HIPCHAT_ROOM=... make localtest
 
 Both tests will use the fixtures declared inside the Makefile.  ```make localtest``` will also validate the logic for skipping certain state transitions that we didn't find useful to blast to the team.
 
-## Integrate into Pivotal
+## Integrate into GitLab
 
-To integrate your filter into your Pivotal project, set your activity web hook URL on the project's Integrations settings page to:
+To integrate your filter into your GitLab project, add the following web hook URL on the project's Web Hooks page:
 
 ```bash
 $(AWS_LAMBDA_FUNCTION_URL)?hipchatToken=...&hipchatRoom=...

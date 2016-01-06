@@ -1,0 +1,54 @@
+{
+	"expected_status":"sent",
+
+	"object_kind": "note",
+	"user": {
+		"name": "maratb",
+		"username": "maratb",
+		"avatar_url": "https://secure.gravatar.com/avatar/614f13f800699cc408db8bb71da31e11?s=40\u0026d=identicon"
+	},
+	"project_id": 120,
+	"repository": {
+		"name": "marat-test-project",
+		"url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"description": "",
+		"homepage": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project"
+	},
+	"object_attributes": {
+		"id": 12001,
+		"note": "What is this?",
+		"noteable_type": "Commit",
+		"author_id": 14,
+		"created_at": "2016-01-06 20:02:34 UTC",
+		"updated_at": "2016-01-06 20:02:34 UTC",
+		"project_id": 120,
+		"attachment": null,
+		"line_code": "669a2c84d4eb3d540cd258b34af26909f6173cef_0_1",
+		"commit_id": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"noteable_id": null,
+		"system": false,
+		"st_diff": {
+			"diff": "--- /dev/null\n+++ b/file3.txt\n@@ -0,0 +1 @@\n+File 3\n",
+			"new_path": "file3.txt",
+			"old_path": "file3.txt",
+			"a_mode": "0",
+			"b_mode": "100644",
+			"new_file": true,
+			"renamed_file": false,
+			"deleted_file": false
+		},
+		"updated_by_id": null,
+		"is_award": false,
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/7010c6ac5d73c59a2576baa26d6317b73c62cc3b#note_12001"
+	},
+	"commit": {
+		"id": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"message": "Merge branch 'some_branch' into 'master'\r\n\r\nLet's merge this\r\n\r\n\r\n\r\nSee merge request !1",
+		"timestamp": "2016-01-06T11:59:58-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"author": {
+			"name": "maratb",
+			"email": "maratb@synopsys.com"
+		}
+	}
+}

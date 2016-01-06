@@ -1,0 +1,45 @@
+{
+	"expected_status":"sent",
+
+	"object_kind": "note",
+	"user": {
+		"name": "maratb",
+		"username": "maratb",
+		"avatar_url": "https://secure.gravatar.com/avatar/614f13f800699cc408db8bb71da31e11?s=40\u0026d=identicon"
+	},
+	"project_id": 120,
+	"repository": {
+		"name": "marat-test-project",
+		"url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"description": "",
+		"homepage": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project"
+	},
+	"object_attributes": {
+		"id": 12002,
+		"note": "This is a strange commit.",
+		"noteable_type": "Commit",
+		"author_id": 14,
+		"created_at": "2016-01-06 20:03:36 UTC",
+		"updated_at": "2016-01-06 20:03:36 UTC",
+		"project_id": 120,
+		"attachment": null,
+		"line_code": null,
+		"commit_id": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"noteable_id": null,
+		"system": false,
+		"st_diff": null,
+		"updated_by_id": null,
+		"is_award": false,
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/7010c6ac5d73c59a2576baa26d6317b73c62cc3b#note_12002"
+	},
+	"commit": {
+		"id": "7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"message": "Merge branch 'some_branch' into 'master'\r\n\r\nLet's merge this\r\n\r\n\r\n\r\nSee merge request !1",
+		"timestamp": "2016-01-06T11:59:58-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/7010c6ac5d73c59a2576baa26d6317b73c62cc3b",
+		"author": {
+			"name": "maratb",
+			"email": "maratb@synopsys.com"
+		}
+	}
+}

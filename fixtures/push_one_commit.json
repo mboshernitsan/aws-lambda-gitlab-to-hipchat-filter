@@ -1,0 +1,37 @@
+{
+	"expected_status":"sent",
+
+	"object_kind": "push",
+	"before": "03465b0d37db9554f998cbc90d39669bcb7214b1",
+	"after": "30ecb1be5585284916d772fc72d2ac9a8fc52618",
+	"ref": "refs/heads/master",
+	"checkout_sha": "30ecb1be5585284916d772fc72d2ac9a8fc52618",
+	"message": null,
+	"user_id": 14,
+	"user_name": "maratb",
+	"user_email": "maratb@synopsys.com",
+	"project_id": 120,
+	"repository": {
+		"name": "marat-test-project",
+		"url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"description": "",
+		"homepage": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project",
+		"git_http_url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project.git",
+		"git_ssh_url": "git@sig-gitlab.internal.synopsys.com:maratb/marat-test-project.git",
+		"visibility_level": 0
+	},
+	"commits": [{
+		"id": "30ecb1be5585284916d772fc72d2ac9a8fc52618",
+		"message": "change readme file\n",
+		"timestamp": "2016-01-06T11:16:19-08:00",
+		"url": "https://sig-gitlab.internal.synopsys.com/maratb/marat-test-project/commit/30ecb1be5585284916d772fc72d2ac9a8fc52618",
+		"author": {
+			"name": "Marat Boshernitsan",
+			"email": "maratb@synopsys.com"
+		},
+		"added": [],
+		"modified": ["README.md"],
+		"removed": []
+	}],
+	"total_commits_count": 1
+}

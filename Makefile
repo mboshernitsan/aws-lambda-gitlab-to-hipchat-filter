@@ -39,37 +39,28 @@ deploy: check-aws-env output/function.zip
 
 
 FIXTURES= \
-	test.json \
-	bug_create.json \
-	chore_create.json \
-	epic_create.json \
-	epic_delete.json \
-	release_create.json \
-	story_attachment_add.json \
-	story_attachment_remove.json \
-	story_change_type.json \
-	story_comment_add.json \
-	story_comment_remove.json \
-	story_create.json \
-	story_delete_multi.json \
-	story_delivered.json \
-	story_description_change.json \
-	story_epic_add.json \
-	story_estimated.json \
-	story_finished.json \
-	story_accepted.json \
-	story_label_add.json \
-	story_label_add_multi.json \
-	story_label_remove.json \
-	story_move_multi.json \
-	story_owner_add.json \
-	story_owner_remove.json \
-	story_started.json \
-	story_task_add.json \
-	story_task_remove.json
+	comment_commit.json \
+	comment_commit_file.json \
+	comment_merge_request.json \
+	comment_merge_request_file.json \
+	issue_close.json \
+	issue_comment.json \
+	issue_open.json \
+	issue_reopen.json \
+	issue_update.json \
+	merge_request_close.json \
+	merge_request_merge.json \
+	merge_request_open.json \
+	merge_request_update.json \
+	push_five_commits.json \
+	push_merge_request.json \
+	push_one_commit.json \
+	push_three_commits.json \
+	push_to_branch.json \
+	tag_push.json
 
 localtest: check-hipchat-env output output/index.js output/node_modules
-	@$(foreach INPUT,$(FIXTURES),\
+	$(foreach INPUT,$(FIXTURES),\
 		cd output && node --use_strict -e \
 		"var ctx=require('aws-lambda-mock-context')(), fixture='../fixtures/$(INPUT)', test=require(fixture); \
 		 require('./index.js').handler({ hipchatToken:'$(HIPCHAT_TOKEN)', hipchatRoom:'$(HIPCHAT_ROOM)', activity:test}, ctx); \
