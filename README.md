@@ -73,7 +73,7 @@ $ aws apigateway create-deployment \
 	--rest-api-id ${AWS_APIGATEWAY_ID} \
     --stage-name prod
 
-$ aws lambda add-permission 
+$ aws lambda add-permission \
 	--function-name postToHipChatFromGitLab \
 	--statement-id 1 \
 	--action lambda:InvokeFunction \

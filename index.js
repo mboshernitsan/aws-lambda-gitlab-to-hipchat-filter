@@ -10,8 +10,7 @@ exports.handler = (function(event, context) {
 
 	switch (activity.object_kind) {
 		case "push":
-			var branch_stem = "refs/heads/";
-			var branch = activity.ref.substring(0, branch_stem.length) == branch_stem ? activity.ref.substring(branch_stem.length) : null;
+			var branch = /^refs\/heads\//.test(activity.ref) ? activity.ref.substring("refs/heads/".length) : null;
 			if (branch != null && branches.indexOf(branch) == -1) { skip = true; break; } 
 
 			bgcolor = 'yellow';
