@@ -1,6 +1,6 @@
 # AWS Lambda GitLab-to-HipChat filter
 
-An AWS Lambda function for filtering and transforming GitLab activity web hook (v5) notifications and posting them to a HipChat room.  We find this cleaner and more flexible than the GitLab's built-in HipChat service.
+An AWS Lambda function for filtering and transforming GitLab activity web hook invocations and posting notifications to a HipChat room.  We find this cleaner and more flexible than the GitLab's built-in HipChat service.
 
 *Important note:* for this integration, you will need to use HipChat API v1 tokens.  
 
